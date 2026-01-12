@@ -53,6 +53,8 @@ fi
 TMPDIR=$(mktemp -d)
 
 echo -e "${YELLOW}Adding necessary repositories...${NC}"
+sudo apt update
+sudo apt install software-properties-common -y || true
 sudo add-apt-repository -y ppa:longsleep/golang-backports || true
 sudo add-apt-repository -y ppa:neovim-ppa/unstable || true
 sudo apt update
@@ -66,7 +68,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
     build-essential \
     cmake \
     unzip \
-    software-properties-common \
     apt-transport-https \
     ca-certificates \
     gnupg \
