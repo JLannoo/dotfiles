@@ -9,7 +9,7 @@ IFS=$'\n\t'
 #   AUTO_INSTALL_MORE=y AUTO_SETUP_DOTFILES=y bash -c "$(curl -fsSL https://raw.githubusercontent.com/jlannoo/dotfiles/master/scripts/setup.sh)"
 
 REPO="https://github.com/jlannoo/dotfiles"
-REPO_RAW="https://raw.githubusercontent.com/jlannoo/dotfiles/main"
+REPO_RAW="https://raw.githubusercontent.com/jlannoo/dotfiles/master"
 
 # Colorful output
 RED='\033[0;31m'
