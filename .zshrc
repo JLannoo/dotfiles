@@ -45,5 +45,5 @@ nvm_sync
 # ===== ALIASES =====
 alias vim="nvim"
 alias rzsh="source ~/.zshrc"
-alias dotfiles="git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+
 

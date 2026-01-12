@@ -1,10 +1,11 @@
 #! /usr/bin/bash -i
 
 # setup dotfile management using stow
-echo -e "${GREEN}Setting up dotfiles with stow...${NC}"
+echo -e "${YELLOW}Setting up dotfiles with stow...${NC}"
 DOTFILES_DIR="$HOME/dotfiles"
 cd $DOTFILES_DIR
 
 # List of dotfiles to stow
+git clone $REPO $DOTFILES_DIR || true
 stow .
 echo -e "${GREEN}Dotfiles setup completed!${NC}"

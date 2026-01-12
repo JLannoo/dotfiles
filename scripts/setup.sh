@@ -4,9 +4,9 @@ IFS=$'\n\t'
 
 # Minimal safety and curlable-friendly bootstrap script.
 # Designed to be run like:
-#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/jlannoo/dotfiles/main/scripts/setup.sh)"
+#   bash -c "$(curl -fsSL https://raw.githubusercontent.com/jlannoo/dotfiles/master/scripts/setup.sh)"
 # or
-#   AUTO_INSTALL_MORE=y AUTO_SETUP_DOTFILES=y bash -c "$(curl -fsSL https://raw.githubusercontent.com/jlannoo/dotfiles/main/scripts/setup.sh)"
+#   AUTO_INSTALL_MORE=y AUTO_SETUP_DOTFILES=y bash -c "$(curl -fsSL https://raw.githubusercontent.com/jlannoo/dotfiles/master/scripts/setup.sh)"
 
 REPO="https://github.com/jlannoo/dotfiles"
 REPO_RAW="https://raw.githubusercontent.com/jlannoo/dotfiles/main"
@@ -157,10 +157,12 @@ elif [ "$interactive" = true ]; then
 fi
 
 if [ "$setup_dotfiles" = "y" ]; then
+    echo -e "${YELLOW}Setting up dotfiles...${NC}"
     if [ -f scripts/dotfiles ]; then
         bash scripts/dotfiles || true
     else
         # use raw.githubusercontent to avoid HTML
+        echo -e "${YELLOW}Fetching and running dotfiles setup script...${NC}"
         if command_exists curl; then
             bash -e <(curl -fsSL "$REPO_RAW/scripts/dotfiles") || true
         else
