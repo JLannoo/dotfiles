@@ -1,0 +1,38 @@
+#!/usr/bin/bash
+# Script to open the repository of the current working directory in the default web browser.
+
+# Function to get the remote URL of the git repository
+get_remote_url() {
+    git config --get remote.origin.url
+}
+
+# Function to convert SSH URL to HTTPS URL
+convert_ssh_to_https() {
+    local ssh_url="$1"
+    if [[ "$ssh_url" =~ ^git@([^:]+):(.+)\.git$ ]]; then
+        local domain="${BASH_REMATCH[1]}"
+        local path="${BASH_REMATCH[2]}"
+        echo "https://$domain/$path"
+    else
+        echo "$ssh_url"
+    fi
+}
+
+# Main script execution
+remote_url=$(get_remote_url)
+if [ -z "$remote_url" ]; then
+    echo "Not currenty in a git repository or no remote URL found."
+    exit 1
+fi
+
+# Convert SSH URL to HTTPS if necessary
+if [[ "$remote_url" =~ ^git@ ]]; then
+    remote_url=$(convert_ssh_to_https "$remote_url")
+fi
+
+# Remove the .git suffix if present
+remote_url="${remote_url%.git}"
+# Open the URL in the default web browser
+xdg-open "$remote_url"
+
+exit 0

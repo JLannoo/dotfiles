@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+VERSION="8.4"
+PORT="8080"
+APACHE=0
+EXTENSIONS="mysqli pdo pdo_mysql"
+
+# get script flags
+while getopts v:p:a flag;
+  do
+    case "${flag}" in
+      v) VERSION="$OPTARG" ;;
+      p) PORT="$OPTARG" ;;
+      a) APACHE=1 ;;
+    esac
+done
+
+VERSION_STRING="${VERSION}"
+if [ $APACHE -eq 1 ]; then
+  VERSION_STRING="${VERSION}-apache"
+fi
+
+echo "Starting PHP server version ${VERSION_STRING} at http://localhost:${PORT}/"
+
+
+# Enable php modules
+docker run --rm -p $PORT:80 -v $(pwd):/var/www/html/ php:${VERSION_STRING} bash -c "\
+    docker-php-ext-install ${EXTENSIONS} && \
+    apache2-foreground \
+"
