@@ -1,7 +1,7 @@
 # ===== ENVIRONMENT VARIABLES =====
 export ZSH="$HOME/.oh-my-zsh"
 export EMSDK_QUIET=1
-export PATH=$PATH:~/scripts/
+export PATH=$PATH:~/scripts/:~/go/bin/
 
 # ===== THEME =====
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
