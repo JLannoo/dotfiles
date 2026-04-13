@@ -52,6 +52,9 @@ fi
 
 TMPDIR=$(mktemp -d)
 
+# Set DEBIAN_FRONTEND for the entire script to avoid interactive prompts (e.g. tzdata)
+export DEBIAN_FRONTEND=noninteractive
+
 echo -e "${YELLOW}Adding necessary repositories...${NC}"
 sudo apt update
 sudo apt install software-properties-common -y || true
@@ -60,7 +63,7 @@ sudo add-apt-repository -y ppa:neovim-ppa/unstable || true
 sudo apt update
 
 echo -e "${YELLOW}Installing essential packages...${NC}"
-DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+sudo apt install -y \
     git \
     stow \
     curl \
@@ -69,7 +72,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
     cmake \
     unzip \
     unrar \
-    fastfetch \
     parallel \
     xclip \
     apt-transport-https \
@@ -78,10 +80,10 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
     sudo \
     pipewire \
     pipewire-audio-client-libraries \
-    pipewire-alsa || true
+    pipewire-alsa
 
 echo -e "${YELLOW}Installing Zsh...${NC}"
-DEBIAN_FRONTEND=noninteractive sudo apt install -y zsh || true
+sudo apt install -y zsh
 
 # Install Oh My Zsh without auto-changing shell or running zsh immediately
 echo -e "${YELLOW}Installing Oh My Zsh (no auto-run / no chsh)...${NC}"
@@ -97,11 +99,11 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" || true
 fi
 if [ ! -d "$ZSH_CUSTOM/plugins/you-should-use" ]; then
-    git clone --depth=1 https://github.com/MichaelAqworter/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use" || true
+    git clone --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use" || true
 fi
 
 echo -e "${YELLOW}Setting up neovim-kickstart and dependencies...${NC}"
-DEBIAN_FRONTEND=noninteractive sudo apt install -y make gcc ripgrep unzip git xclip neovim || true
+sudo apt install -y make gcc ripgrep unzip git xclip neovim
 if [ ! -d "${XDG_CONFIG_HOME:-$HOME/.config}/nvim" ]; then
     git clone --depth=1 https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/nvim" || true
 fi
@@ -146,14 +148,14 @@ EOF
 
     sudo apt update || true
 
-    DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+    sudo apt install -y \
         docker-ce \
         docker-ce-cli \
         containerd.io \
         docker-buildx-plugin \
         docker-compose-plugin || true
 
-    DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+    sudo apt install -y \
         ffmpeg \
         vlc \
         obs-studio \
@@ -191,7 +193,7 @@ EOF
 
     # Gaming (Steam, Lutris, Protontricks)
     echo -e "${YELLOW}Installing gaming software...${NC}"
-    DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+    sudo apt install -y \
         steam \
         lutris \
         protontricks || true
