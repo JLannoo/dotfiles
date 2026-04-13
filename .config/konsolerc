@@ -1,0 +1,22 @@
+MenuBar=Disabled
+
+[Desktop Entry]
+DefaultProfile=Profile 1.profile
+
+[General]
+ConfigVersion=1
+
+[MainWindow]
+MenuBar=Disabled
+State[$d]
+
+[Notification Messages]
+CloseAllEmptyTabs=false
+CloseAllTabs=true
+CloseSingleTab=true
+
+[TabBar]
+TabBarPosition=Bottom
+
+[UiSettings]
+ColorScheme=

@@ -7,7 +7,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.bun/bin
-export PATH=/home/jlannoo/.opencode/bin:$PATH
+export PATH=$PATH:$HOME/.opencode/bin
 
 # ===== THEME =====
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes

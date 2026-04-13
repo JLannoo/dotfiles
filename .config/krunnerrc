@@ -1,0 +1,8 @@
+[Plugins]
+baloosearchEnabled=true
+krunner_dictionaryEnabled=false
+krunner_powerdevilEnabled=false
+krunner_spellcheckEnabled=false
+
+[Plugins][Favorites]
+plugins=krunner_sessions,krunner_services,krunner_systemsettings,krunner_powerdevil

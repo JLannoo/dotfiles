@@ -68,6 +68,10 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
     build-essential \
     cmake \
     unzip \
+    unrar \
+    fastfetch \
+    parallel \
+    xclip \
     apt-transport-https \
     ca-certificates \
     gnupg \
@@ -92,6 +96,9 @@ fi
 if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
     git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" || true
 fi
+if [ ! -d "$ZSH_CUSTOM/plugins/you-should-use" ]; then
+    git clone --depth=1 https://github.com/MichaelAqworter/zsh-you-should-use.git "$ZSH_CUSTOM/plugins/you-should-use" || true
+fi
 
 echo -e "${YELLOW}Setting up neovim-kickstart and dependencies...${NC}"
 DEBIAN_FRONTEND=noninteractive sudo apt install -y make gcc ripgrep unzip git xclip neovim || true
@@ -110,9 +117,22 @@ fi
 if [ "$install_more" = "y" ]; then
     echo -e "${YELLOW}Installing additional software...${NC}"
 
+    # GitHub CLI (used by .gitconfig for credential management)
+    if ! command_exists gh; then
+        echo -e "${YELLOW}Installing GitHub CLI...${NC}"
+        (type -p wget >/dev/null || sudo apt install -y wget) \
+            && sudo mkdir -p -m 755 /etc/apt/keyrings \
+            && out=$(mktemp) && wget -nv -O"$out" https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+            && cat "$out" | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+            && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+            && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+            && sudo apt update && sudo apt install -y gh || true
+    fi
+
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash || true
 
     # Docker setup
+    echo -e "${YELLOW}Setting up Docker...${NC}"
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc || true
     sudo chmod a+r /etc/apt/keyrings/docker.asc || true
@@ -134,17 +154,47 @@ EOF
         docker-compose-plugin || true
 
     DEBIAN_FRONTEND=noninteractive sudo apt install -y \
-        emmake \
         ffmpeg \
-        steam \
         vlc \
-        discord \
+        obs-studio \
         qbittorrent \
         flatpak \
-        mysql-server \
-        obs-studio \
         golang-go \
-        python3-pip || true
+        python3-pip \
+        python3-venv \
+        default-jre \
+        sqlite3 \
+        libsqlite3-dev \
+        mysql-server \
+        adb \
+        fastboot \
+        scrcpy \
+        qdirstat || true
+
+    # Setup Flathub remote for Flatpak
+    if command_exists flatpak; then
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
+    fi
+
+    # Google Chrome
+    if ! command_exists google-chrome-stable; then
+        echo -e "${YELLOW}Installing Google Chrome...${NC}"
+        wget -q -O "$TMPDIR/chrome.deb" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i "$TMPDIR/chrome.deb" || sudo apt install -f -y || true
+    fi
+
+    # Tailscale
+    if ! command_exists tailscale; then
+        echo -e "${YELLOW}Installing Tailscale...${NC}"
+        curl -fsSL https://tailscale.com/install.sh | sh || true
+    fi
+
+    # Gaming (Steam, Lutris, Protontricks)
+    echo -e "${YELLOW}Installing gaming software...${NC}"
+    DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+        steam \
+        lutris \
+        protontricks || true
 fi
 
 echo -e "${GREEN}Basic setup completed!${NC}"

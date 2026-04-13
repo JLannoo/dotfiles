@@ -1,0 +1,18 @@
+MenuBar=Disabled
+
+[ExtractDialog]
+2 screens: Height=720
+2 screens: Width=1280
+DirHistory[$e]=$HOME/Downloads/rimworld-server/
+
+[General]
+ModifiedStartupSettings=true
+Version=202
+ViewPropsTimestamp=2025,11,17,18,35,43.365
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
