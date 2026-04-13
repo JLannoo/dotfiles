@@ -1,7 +1,13 @@
 # ===== ENVIRONMENT VARIABLES =====
 export ZSH="$HOME/.oh-my-zsh"
 export EMSDK_QUIET=1
-export PATH=$PATH:~/scripts/:~/go/bin/
+export NVM_LAZY_LOAD=true
+export BUN_INSTALL="$HOME/.bun"
+
+export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.bun/bin
+export PATH=/home/jlannoo/.opencode/bin:$PATH
 
 # ===== THEME =====
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -36,14 +42,26 @@ function nvm_sync() {
 	fi
 }
 
+function venv_activate() {
+	if [[ -f .venv/bin/activate ]]; then
+		source .venv/bin/activate
+	fi
+	if [[ -f venv/bin/activate ]]; then
+		source venv/bin/activate
+	fi
+}
+
 function chpwd() {
 	nvm_sync
 }
 
 nvm_sync
+venv_activate
 
 # ===== ALIASES =====
 alias vim="nvim"
 alias rzsh="source ~/.zshrc"
-
-
+alias py="python3"
+alias adb-unlock="adb shell input keyevent 26 && adb shell input swipe 200 600 200 0"
+alias aptdate="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
+alias winreboot="sudo grub-reboot 'Windows Boot Manager (on /dev/sdc1)' && sudo reboot"
