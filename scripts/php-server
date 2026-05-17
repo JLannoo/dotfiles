@@ -22,9 +22,8 @@ fi
 
 echo "Starting PHP server version ${VERSION_STRING} at http://localhost:${PORT}/"
 
-
 # Enable php modules
-docker run --rm -p $PORT:80 -v $(pwd):/var/www/html/ php:${VERSION_STRING} bash -c "\
+docker run --rm -p $PORT:80 --add-host=host.docker.internal:host-gateway -v $(pwd):/var/www/html/ php:${VERSION_STRING} bash -c "\
     docker-php-ext-install ${EXTENSIONS} && \
     apache2-foreground \
 "
