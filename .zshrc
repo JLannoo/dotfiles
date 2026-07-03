@@ -54,6 +54,7 @@ function venv_activate() {
 
 function chpwd() {
 	nvm_sync
+	venv_activate
 }
 
 nvm_sync

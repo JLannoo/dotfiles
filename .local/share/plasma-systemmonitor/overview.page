@@ -150,7 +150,7 @@ showTitle=true
 
 [Face-108592549200736][org.kde.ksysguard.applicationstable][General]
 columnDisplay={"gpu_module":"hidden","gpu_usage":"text","ioCharactersActuallyReadRate":"text","ioCharactersActuallyWrittenRate":"text","memory":"text","netInbound":"text","netOutbound":"text","pid":"text","usage":"lineScaled"}
-columnWidths=0.23526374755406865,0.10,0.11,0.12,0.12,0.12,0.12,0.11022825250788636
+columnWidths=0.26988050206327374,0.10,0.11,0.12,0.12,0.12,0.12,0.11022825250788636
 detailsWidth=309.40234375
 showDetails=true
 showToolBar=true
