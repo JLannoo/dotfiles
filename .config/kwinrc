@@ -1,6 +1,3 @@
-[Activities][LastVirtualDesktop]
-d42e627b-d93c-41ff-ae92-83d265d86b8f=0a23f02c-7117-49aa-99f6-8e1bb3f33b09
-
 [Desktops]
 Id_1=0a23f02c-7117-49aa-99f6-8e1bb3f33b09
 Id_2=d3a711e2-2089-482b-abe1-c3656e452908
@@ -17,13 +14,13 @@ CommandInactiveTitlebar2=Close
 
 [NightColor]
 Active=true
-LatitudeFixed=-33.61591492287569
-LongitudeFixed=-61.10157421239664
-Mode=Location
 
 [Plugins]
 krohnkiteEnabled=true
+overviewEnabled=false
 screenedgeEnabled=false
+translucencyEnabled=false
+wobblywindowsEnabled=false
 
 [Script-krohnkite]
 binaryTreeLayoutOrder=0
@@ -43,19 +40,18 @@ threeColumnLayoutOrder=0
 HighlightWindows=false
 LayoutName=compact
 
-[Tiling]
-padding=4
-
 [Tiling][0a23f02c-7117-49aa-99f6-8e1bb3f33b09][]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][0a23f02c-7117-49aa-99f6-8e1bb3f33b09][342c74c6-f186-46c2-8718-4eb2885d1d63]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][0a23f02c-7117-49aa-99f6-8e1bb3f33b09][6800a1a5-bc1c-4997-990c-0a13579942a2]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][0a23f02c-7117-49aa-99f6-8e1bb3f33b09][bacdf0c5-3192-432c-b62e-42cd8a0591ef]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.26992187500000003},{"width":0.26874999999999966},{"width":0.4613281250000003}]}
 
 [Tiling][0eaf9121-cd9b-4a22-a227-287b98b3941a][342c74c6-f186-46c2-8718-4eb2885d1d63]
@@ -68,9 +64,11 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][d3a711e2-2089-482b-abe1-c3656e452908][342c74c6-f186-46c2-8718-4eb2885d1d63]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][d3a711e2-2089-482b-abe1-c3656e452908][bacdf0c5-3192-432c-b62e-42cd8a0591ef]
+padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Wayland]

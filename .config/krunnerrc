@@ -1,8 +1,16 @@
 [Plugins]
 baloosearchEnabled=true
+helprunnerEnabled=false
+krunner_appstreamEnabled=false
+krunner_charrunnerEnabled=false
 krunner_dictionaryEnabled=false
+krunner_katesessionsEnabled=false
+krunner_konsoleprofilesEnabled=false
+krunner_placesrunnerEnabled=false
 krunner_powerdevilEnabled=false
+krunner_sessionsEnabled=false
 krunner_spellcheckEnabled=false
+windowsEnabled=false
 
 [Plugins][Favorites]
-plugins=krunner_sessions,krunner_services,krunner_systemsettings,krunner_powerdevil
+plugins=krunner_services,krunner_recentdocuments,baloosearch,krunner_systemsettings

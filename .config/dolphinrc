@@ -6,7 +6,6 @@ MenuBar=Disabled
 DirHistory[$e]=$HOME/Downloads/rimworld-server/
 
 [General]
-ModifiedStartupSettings=true
 Version=202
 ViewPropsTimestamp=2025,11,17,18,35,43.365
 
@@ -16,3 +15,6 @@ Places Icons Static Size=22
 
 [MainWindow]
 MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=ebookthumbnail,directorythumbnail,imagethumbnail,comicbookthumbnail,appimagethumbnail,windowsexethumbnail,windowsimagethumbnail,kraorathumbnail,cursorthumbnail,mobithumbnail,gsthumbnail,fontthumbnail,ffmpegthumbs,djvuthumbnail,blenderthumbnail,exrthumbnail,svgthumbnail,opendocumentthumbnail,rawthumbnail,jpegthumbnail,audiothumbnail,librsvg,gdk-pixbuf-thumbnailer
