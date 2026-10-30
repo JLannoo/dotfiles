@@ -80,7 +80,10 @@ sudo apt install -y \
     sudo \
     pipewire \
     pipewire-audio-client-libraries \
-    pipewire-alsa
+    pipewire-alsa \
+    jq \
+    bat \
+    zip
 
 echo -e "${YELLOW}Installing Zsh...${NC}"
 sudo apt install -y zsh

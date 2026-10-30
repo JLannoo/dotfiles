@@ -5,6 +5,8 @@ export NVM_LAZY_LOAD=true
 export BUN_INSTALL="$HOME/.bun"
 
 export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$HOME/scripts/local
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.bun/bin
 export PATH=$PATH:$HOME/.opencode/bin
@@ -65,5 +67,5 @@ alias vim="nvim"
 alias rzsh="source ~/.zshrc"
 alias py="python3"
 alias adb-unlock="adb shell input keyevent 26 && adb shell input swipe 200 600 200 0"
-alias aptdate="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
+alias aptdate="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && flatpak update && snap refresh"
 alias winreboot="sudo grub-reboot 'Windows Boot Manager (on /dev/sdc1)' && sudo reboot"
